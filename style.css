@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #000000;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 0, 0, 0.08) 0%, transparent 50%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 30px;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(139, 0, 0, 0.03) 25%, rgba(139, 0, 0, 0.03) 26%, transparent 27%, transparent 74%, rgba(139, 0, 0, 0.03) 75%, rgba(139, 0, 0, 0.03) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(139, 0, 0, 0.03) 25%, rgba(139, 0, 0, 0.03) 26%, transparent 27%, transparent 74%, rgba(139, 0, 0, 0.03) 75%, rgba(139, 0, 0, 0.03) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    animation: grid 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes grid {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 60px rgba(255, 0, 0, 0.4),
+        0 0 100px rgba(139, 0, 0, 0.3),
+        inset 0 0 60px rgba(139, 0, 0, 0.05);
+    width: 90%;
+    max-width: 650px;
+    border: 3px solid rgba(139, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #8B0000, #DC143C, #FF0000, #8B0000);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.6;
+    filter: blur(15px);
+    animation: bloodGlow 4s ease-in-out infinite;
+}
+
+@keyframes bloodGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
+    font-size: 2.4em;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.9),
+        0 0 30px rgba(255, 0, 0, 0.6),
+        0 0 45px rgba(255, 0, 0, 0.4),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.glow {
+    color: #FF0000;
+    animation: bloodPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes bloodPulse {
+    0%, 100% { 
+        color: #FF0000;
+        text-shadow: 
+            0 0 15px rgba(255, 0, 0, 1),
+            0 0 30px rgba(255, 0, 0, 0.8),
+            0 0 45px rgba(255, 0, 0, 0.6),
+            0 0 60px rgba(139, 0, 0, 0.4);
+    }
+    50% { 
+        color: #DC143C;
+        text-shadow: 
+            0 0 20px rgba(255, 0, 0, 1),
+            0 0 40px rgba(255, 0, 0, 0.9),
+            0 0 60px rgba(255, 0, 0, 0.7),
+            0 0 80px rgba(139, 0, 0, 0.5);
+    }
+}
+
+.input-group, .output-group {
+    margin-bottom: 35px;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    color: #DC143C;
+    font-weight: 700;
+    font-size: 0.95em;
+    letter-spacing: 3px;
+    text-shadow: 
+        0 0 10px rgba(220, 20, 60, 0.8),
+        0 0 20px rgba(220, 20, 60, 0.4);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 20px 24px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(139, 0, 0, 0.5);
+    border-radius: 12px;
+    font-size: 20px;
+    font-family: sans-serif;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(139, 0, 0, 0.2);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #DC143C;
+    box-shadow: 
+        0 0 25px rgba(220, 20, 60, 0.6),
+        inset 0 0 30px rgba(139, 0, 0, 0.2);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(139, 0, 0, 0.4);
+}
+
+#output {
+    background: rgba(20, 0, 0, 0.8);
+    border-color: rgba(220, 20, 60, 0.6);
+    color: #FF4444;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    text-shadow: 
+        0 0 8px rgba(255, 68, 68, 0.6),
+        0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 20px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #8B0000 100%);
+    color: #fff;
+    border: 2px solid rgba(220, 20, 60, 0.6);
+    border-radius: 12px;
+    font-size: 18px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 
+        0 5px 25px rgba(139, 0, 0, 0.5),
+        0 0 30px rgba(220, 20, 60, 0.3),
+        inset 0 0 20px rgba(255, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.4), transparent);
+    transition: left 0.6s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    border-color: #FF0000;
+    box-shadow: 
+        0 10px 40px rgba(139, 0, 0, 0.7),
+        0 0 50px rgba(220, 20, 60, 0.5),
+        inset 0 0 30px rgba(255, 0, 0, 0.2);
+    background: linear-gradient(135deg, #A00000 0%, #FF1744 50%, #A00000 100%);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.decoration {
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bloodFloat 7s ease-in-out infinite;
+}
+
+@keyframes bloodFloat {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translate(-30px, -30px) rotate(180deg);
+        opacity: 0.6;
+    }
+}
