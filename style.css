@@ -88,8 +88,11 @@ h1 {
         0 0 60px rgba(0, 51, 102, 0.4);
 }
 
-.input-group, .output-group {
+.input-group {
     margin-bottom: 35px;
+}
+
+.output-group {
 }
 
 label {
