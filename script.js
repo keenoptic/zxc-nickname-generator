@@ -63,7 +63,7 @@ document.getElementById('copy').addEventListener('click', function() {
     
     const button = this;
     button.textContent = '✓ СКОПИРОВАНО';
-    button.style.background = '#00ff00';
+    button.style.background = '#00BFFF';
     
     setTimeout(() => {
         button.textContent = 'СКОПИРОВАТЬ';
