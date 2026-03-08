@@ -104,8 +104,8 @@ zxс-nickname-generator/
 ├── 🌐 index.html          # Основной HTML файл
 ├── 🎨 style.css           # Стили интерфейса
 ├── 📦 src/                # Исходный код
-│   ├── _base.js
-│   ├── _shaderBase.js
+│   ├── base.js
+│   ├── shaderBase.js
 │   ├── helpers.js
 │   └── vanta.clouds.js
 └── 🖼️ favicon.svg         # Иконка сайта

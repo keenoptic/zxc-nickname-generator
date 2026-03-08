@@ -1,5 +1,5 @@
-import VantaBase from './_base.js'
-export {VANTA} from './_base.js'
+import VantaBase from './base.js'
+export {VANTA} from './base.js'
 
 const win = typeof window == 'object'
 let THREE = win && window.THREE

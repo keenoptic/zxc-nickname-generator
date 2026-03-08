@@ -1,4 +1,4 @@
-import ShaderBase, {VANTA} from './_shaderBase.js'
+import ShaderBase, {VANTA} from './shaderBase.js'
 
 class Effect extends ShaderBase {}
 export default VANTA.register('CLOUDS', Effect)
