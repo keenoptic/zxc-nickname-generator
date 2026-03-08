@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZXC Генератор ников</title>
+    <title>ZXC Generator</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="vanta-canvas"></div>
+
     <div class="container">
         <h1><span class="glow">ZXC</span> ГЕНЕРАТОР НИКОВ</h1>
         <div class="input-group">
@@ -18,10 +21,105 @@
             <label for="output">ТВОЙ НИК:</label>
             <input type="text" id="output" readonly>
             <button id="copy">СКОПИРОВАТЬ</button>
-            <p style="text-align: center; margin-top: 10px; color: #00BFFF; font-size: 0.8em; letter-spacing: 2px;">by keenoptic</p>
+            <p class="by-line"><a href="https://github.com/keenoptic" target="_blank" rel="noopener noreferrer">by keenoptic</a></p>
         </div>
         <div class="decoration"></div>
     </div>
-    <script src="script.js"></script>
+
+    <script type="module">
+        import './src/vanta.clouds.js'
+        
+        VANTA.CLOUDS({
+            el: "#vanta-canvas",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            backgroundColor: 0x0,
+            skyColor: 0x3c254a,
+            cloudColor: 0x522c52,
+            cloudShadowColor: 0x173550,
+            sunColor: 0xbb735e,
+            sunGlareColor: 0xaf8f86,
+            sunlightColor: 0xf7fce7,
+            speed: 1.40
+        })
+    </script>
+
+    <script>
+        const dictionary = {
+            'а': 'a',
+            'б': '6',
+            'в': 'B',
+            'г': 'r',
+            'д': 'D',
+            'е': 'e',
+            'ё': '€', 
+            'ж': '}|{',
+            'з': '3',
+            'и': 'u',
+            'й': 'u',
+            'к': 'K',
+            'л': 'Jl',
+            'м': 'M',
+            'н': 'H',
+            'о': 'o',
+            'п': 'TT',
+            'р': 'p',
+            'с': 'C',
+            'т': 'T',
+            'у': 'y',
+            'ф': '8',
+            'х': 'X',
+            'ц': 'C',
+            'ч': '4',
+            'ш': 'W',
+            'щ': 'W]',
+            'ъ': 'b',
+            'ы': 'bl',
+            'ь': 'b',
+            'э': '3',
+            'ю': 'I-O',
+            'я': '9l'
+        };
+
+        function generateNick(text) {
+            let result = '';
+            
+            for (let char of text.toLowerCase()) {
+                if (dictionary.hasOwnProperty(char) && dictionary[char]) {
+                    result += dictionary[char];
+                } else if (char === ' ') {
+                    result += '_';
+                } else {
+                    result += char;
+                }
+            }
+            
+            return result;
+        }
+
+        document.getElementById('input').addEventListener('input', function() {
+            const input = this.value;
+            const output = generateNick(input);
+            document.getElementById('output').value = output;
+        });
+
+        document.getElementById('copy').addEventListener('click', function() {
+            const output = document.getElementById('output');
+            output.select();
+            document.execCommand('copy');
+            
+            const button = this;
+            button.textContent = '✓ СКОПИРОВАНО';
+            button.style.background = 'linear-gradient(135deg, #522c52 0%, #9b5db6 50%, #522c52 100%)';
+            
+            setTimeout(() => {
+                button.textContent = 'СКОПИРОВАТЬ';
+                button.style.background = '';
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
